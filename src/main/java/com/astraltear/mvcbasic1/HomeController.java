@@ -26,10 +26,10 @@ public class HomeController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-//		 ¾Æ·¡ÀÇ ¼³Á¤Àº ÇØ´ç ÇÊµå°¡ disable»óÅÂ·Î request¿¡ Àü´ŞµÇÁö ¾Ê´Â´Ù. 
+//		  ì•„ë˜ì˜ ì„¤ì •ì€ í•´ë‹¹ í•„ë“œê°€ disableìƒíƒœë¡œ requestì— ì „ë‹¬ë˜ì§€ ì•ŠëŠ”ë‹¤.
 		binder.setDisallowedFields(new String[] {"studentHobby"});
 		
-//		³¯Â¥ Æ÷¸Ë ÁöÁ¤ 
+//		ë‚ ì§œ í¬ë§· ì§€ì • 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		binder.registerCustomEditor(Date.class, "studentRegDate", new CustomDateEditor(dateFormat, false));
 		binder.registerCustomEditor(String.class, "studentName", new StudentNameEditor());
@@ -62,11 +62,11 @@ public class HomeController {
 		model1.addAttribute("headerMessage", "ModelAttribute Common Message");
 	}
 	
-//	¸ğµ¨ ¾îÆ®¸®ºäÆ® ¼³Á¤ ¹× ¸ŞÀÎ DTO¼¼ÆÃ °ú ¸ŞÀÎ¿¡ Á¾¼ÛÀûÀÎ DTO ¼¼ÆÃ¹æ¹ı
+//	ëª¨ë¸ ì–´íŠ¸ë¦¬ë·°íŠ¸ ì„¤ì • ë° ë©”ì¸ DTOì„¸íŒ… ê³¼ ë©”ì¸ì— ì¢…ì†¡ì ì¸ DTO ì„¸íŒ…ë°©ë²•
 	@RequestMapping(value="/AdmissionOKForm", method=RequestMethod.POST)
 	public String AdmissionOKForm(@ModelAttribute("student1") Student student, BindingResult result) {
 		
-		// bindingresult ¿¡·¯ Ã³¸® ¹æ¹ı 
+		// bindingresult ì—ëŸ¬ ì²˜ë¦¬ ë°©ë²• 
 		if(result.hasErrors()) {
 			return "AdmissionForm";
 		}
