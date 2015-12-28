@@ -2,7 +2,17 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/status/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/status/500.jsp</location>
+	</error-page>
+	
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -30,7 +40,19 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	
+	<!--  http request logger filter -->
+	<filter>
+		<filter-name>logFilter</filter-name>
+		<filter-class>com.astraltear.mvcbasic1.filter.AccessLoggerFilter</filter-class>
+	</filter>
 		
+	<filter-mapping>
+		<filter-name>logFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 한글처리 -->	
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

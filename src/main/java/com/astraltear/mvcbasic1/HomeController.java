@@ -42,9 +42,7 @@ public class HomeController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
 		String formattedDate = dateFormat.format(date);
-		
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
@@ -72,6 +70,18 @@ public class HomeController {
 		}
 		
 		return "AdmissionOK";
+	}
+	
+	@RequestMapping(value="/tiles-index", method=RequestMethod.GET)
+	public String index(Model model, Locale locale) {
+		logger.info("welcome index");
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "home.tiles";
+		
 	}
 	
 }
