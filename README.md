@@ -7,6 +7,6 @@ log4j
 @InitBinder
 binder.registerCustomEditor
 @ModelAttribute
-¸ğµ¨ ¾îÆ®¸®ºäÆ® ¼³Á¤ ¹× ¸ŞÀÎ DTO¼¼ÆÃ °ú ¸ŞÀÎ¿¡ Á¾¼ÛÀûÀÎ DTO ¼¼ÆÃ¹æ¹ı
-bindingresult ¿¡·¯ Ã³¸® ¹æ¹ı 
+ëª¨ë¸ ì–´íŠ¸ë¦¬ë·°íŠ¸ ì„¤ì • ë° ë©”ì¸ DTOì„¸íŒ… ê³¼ ë©”ì¸ì— ì¢…ì†¡ì ì¸ DTO ì„¸íŒ…ë°©ë²•
+bindingresult ì—ëŸ¬ ì²˜ë¦¬ ë°©ë²• 
 <form:errors path="student1.*"/> 
