@@ -49,5 +49,13 @@ public class Student {
 	public void setStudentRegDate(Date studentRegDate) {
 		this.studentRegDate = studentRegDate;
 	}
+	@Override
+	public String toString() {
+		return "Student [studentName=" + studentName + ", studentHobby=" + studentHobby + ", studentMobile="
+				+ studentMobile + ", studentRegDate=" + studentRegDate + ", studentSkills=" + studentSkills
+				+ ", studentAddress=" + studentAddress + "]";
+	}
+	
+	
 	
 }

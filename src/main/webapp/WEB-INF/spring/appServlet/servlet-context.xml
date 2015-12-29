@@ -12,14 +12,40 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-
-	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+<!--  tiles  -->
+<!-- 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions" value="/WEB-INF/views/layouts.xml" />     
 	</beans:bean>
 	
 	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+	</beans:bean> -->
+
+<!-- jsp -->
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>	
+	
+	<!-- SimpleUrlHandler -->
+	
+	<beans:bean id="simpleUrlHandlerController" class="com.astraltear.mvcbasic1.SimpleUrlHandlerController"/>
+	<beans:bean id="urlHandler" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<beans:property name="urlMap">
+			<beans:map>
+				<beans:entry key="/simpleUrlControl" value-ref="simpleUrlHandlerController"></beans:entry>
+			</beans:map>
+		</beans:property>
 	</beans:bean>
+	
+	<!--  interceptors  -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/paramModelAttr/**/"/>
+			<beans:bean class="com.astraltear.mvcbasic1.MyRequestHandlerInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	<context:component-scan base-package="com.astraltear.mvcbasic1" />
 	
