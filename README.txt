@@ -2,6 +2,7 @@ Spring MVC 4.2.4
 log4j
 Jackson
 tiles3
+spring security
 
 tiles resolver와 jsp resolver가 혼재하므로 해당 resolver를 보려면 
 servlet-context.xml을 적당히 수정하면서 해야 한다. 
@@ -78,10 +79,18 @@ servlet-context.xml을 적당히 수정하면서 해야 한다.
  		
  	@ModelAttribute("paramModelAttr") 파라미터 처리 
  	
- ## HttpEntity Jackson 처리 
+## HttpEntity Jackson 처리 
  	HttpEntity
  	@ResponseBody
  	@ResponseStatus(value=HttpStatus.NOT_FOUND)
  	@PathVariable("id") String id, @PathVariable("name") String name
  	ResponseEntity
  	produces= {"application/json","application/xml"}
+ 	
+ 
+## Spring Security
+	spring security filter
+	security-context.xml
+	(아래의 exception발생) 
+	At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+1
