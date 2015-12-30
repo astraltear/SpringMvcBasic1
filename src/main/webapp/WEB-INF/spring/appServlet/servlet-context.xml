@@ -11,6 +11,10 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	
+	<!-- resource link  -->
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/myres/**" location="/myres/" />
 
 <!--  tiles  -->
 <!-- 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
