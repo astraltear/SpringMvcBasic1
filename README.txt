@@ -4,6 +4,12 @@ Jackson
 tiles3
 spring security
 form validation
+h2 database
+commons-dbcp
+spring test JUNIT4
+JdbcDaoSupport getJdbcTemplate
+transaction
+
 
 tiles resolver와 jsp resolver가 혼재하므로 해당 resolver를 보려면 
 servlet-context.xml을 적당히 수정하면서 해야 한다. 
@@ -105,3 +111,41 @@ servlet-context.xml을 적당히 수정하면서 해야 한다.
 	At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
 1
 
+
+## database H2
+	<properties>
+		<entry key="database.driverClassName">org.h2.Driver</entry>
+		<entry key="database.url">jdbc:h2:~/astral</entry>
+		<entry key="database.username">sa</entry>
+		<entry key="database.password"></entry>
+	</properties>
+	<context:property-placeholder location="classpath*:application-properties.xml"/>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="${database.driverClassName}"
+		p:url="${database.url}"
+		p:username="${database.username}"
+		p:password="${database.password}"
+	 />
+ 
+## spring test
+	junit4로 jdbc 설정 테스트를 한다. 
+	com.astraltear.support.ApplicationContextTest
+	@RunWith(SpringJUnit4ClassRunner.class)
+	@ContextConfiguration(locations= {"/applicationContext.xml"})
+	JdbcDaoSupport
+
+	@PostConstruct
+	public void initialize() {
+		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+		populator.addScript(new ClassPathResource("user.sql"));
+		DatabasePopulatorUtils.execute(populator, getDataSource());
+	}
+	
+## transaction
+		 
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+	 	p:dataSource-ref="dataSource"/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	 
+	@TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
+	@Transactional
