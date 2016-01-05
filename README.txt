@@ -3,12 +3,22 @@ log4j
 Jackson
 tiles3
 spring security
+form validation
 
 tiles resolver와 jsp resolver가 혼재하므로 해당 resolver를 보려면 
 servlet-context.xml을 적당히 수정하면서 해야 한다. 
 
 <annotation-driven />
 <context:component-scan base-package="com.astraltear.mvcbasic1" />
+
+<context:component-scan base-package="com.astraltear.mvcbasic1.web" />
+	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+</context:component-scan>
+
+<context:component-scan base-package="com.astraltear.mvcbasic1.dao" />
+	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+</context:component-scan>
+
 
 ## @InitBinder
 	HomeController.initBinder
@@ -94,3 +104,4 @@ servlet-context.xml을 적당히 수정하면서 해야 한다.
 	(아래의 exception발생) 
 	At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
 1
+
