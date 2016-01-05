@@ -9,6 +9,7 @@ commons-dbcp
 spring test JUNIT4
 JdbcDaoSupport getJdbcTemplate
 transaction
+logback
 
 
 tiles resolver와 jsp resolver가 혼재하므로 해당 resolver를 보려면 
@@ -149,3 +150,11 @@ servlet-context.xml을 적당히 수정하면서 해야 한다.
 	 
 	@TransactionConfiguration(transactionManager="transactionManager", defaultRollback=true)
 	@Transactional
+	
+## logback	
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		src\main\resources\logback.xml

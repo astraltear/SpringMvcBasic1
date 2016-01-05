@@ -22,7 +22,8 @@ import com.astraltear.mvcbasic1.persist.UserDAO;
 @Transactional
 public class UserDAOTest {
 	
-	private static Logger logger = LoggerFactory.getLogger(UserDAOTest.class);
+	private static final Logger log = LoggerFactory.getLogger(UserDAOTest.class);
+
 
 	@Autowired
 	private UserDAO userDAO;
@@ -32,7 +33,7 @@ public class UserDAOTest {
 		User user = new User("darap", "darapPW", "다레이프", "darap@naver.com");
 		userDAO.create(user);
 		User actual = userDAO.findById(user.getUserid());
-		logger.info("<<<<<<<<<< User >>>>>>>>>>>>>>>> : {}", actual);
+		log.info("<<<<<<<<<< User >>>>>>>>>>>>>>>> : {}", actual);
 		
 		assertThat(actual, CoreMatchers.is(user));
 	}
