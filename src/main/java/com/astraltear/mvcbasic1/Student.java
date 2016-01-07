@@ -3,9 +3,15 @@ package com.astraltear.mvcbasic1;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 
 public class Student {
 	private String studentName;
+	
+	@Size(min=2, max=30)
 	private String studentHobby;
 	private Long studentMobile;
 	private Date studentRegDate;

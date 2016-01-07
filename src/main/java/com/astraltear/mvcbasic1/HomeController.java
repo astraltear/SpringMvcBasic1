@@ -5,8 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,7 +64,7 @@ public class HomeController {
 	
 //	모델 어트리뷰트 설정 및 메인 DTO세팅 과 메인에 종송적인 DTO 세팅방법
 	@RequestMapping(value="/AdmissionOKForm", method=RequestMethod.POST)
-	public String AdmissionOKForm(@ModelAttribute("student1") Student student, BindingResult result) {
+	public String AdmissionOKForm(@Valid @ModelAttribute("student1") Student student, BindingResult result) {
 		
 		// bindingresult 에러 처리 방법 
 		if(result.hasErrors()) {

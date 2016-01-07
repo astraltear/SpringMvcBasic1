@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-ModelAttribute setting and master dto setting detail dto setting how to
+ModelAttribute setting and master dto setting detail dto setting how to<br>
 
 <!-- bindingresult 에러 처리 방법 -->
 <form:errors path="student1.*"/> 
