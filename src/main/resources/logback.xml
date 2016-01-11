@@ -7,13 +7,13 @@
 	    </encoder>
 	</appender>
 	
-	<logger name="com.astraltear.mvcbasic1" level="WARN" />
+	<logger name="com.astraltear.test" level="DEBUG" />
 	
-	<logger name="org.springframework" level="WARN"/>
-	<logger name="org.springframework.web.bind.annotation.support.HandlerMethodInvoker" level="WARN"/>
-	<logger name="org.springframework.web.servlet.DispatcherServlet" level="WARN"/>
+	<logger name="org.springframework" level="DEBUG"/>
+	<logger name="org.springframework.web.bind.annotation.support.HandlerMethodInvoker" level="DEBUG"/>
+	<logger name="org.springframework.web.servlet.DispatcherServlet" level="DEBUG"/>
 
-	<root level="WARN">
+	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
 	</root>
 
